@@ -1,0 +1,4 @@
+spotipy_keys.json
+venv
+.venv
+.cache-*

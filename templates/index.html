@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="static\css\style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caprasimo&family={{font}}&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Demo app</title>
+  </head>
+
+  <body
+    class="book"
+    style="background-color: {{ colour }}; font-family: {{font}}; color: {{ text_colour }}; padding: 35px;"
+  >
+</br>
+    <h1>STORYBOT 🤖</h1>
+    <h3>Let's write a story...</h3>
+</br>
+</br>
+</br>
+</br>
+    <div>
+      <form method="POST">
+      <input class="input-search" name="question" type="text" size="150" value="{{question}}" />
+    </br>
+    </br>
+      <input class="submit-button" type="submit" value="Generate ✍🏾"/>
+    </form>
+  </div>
+</br>
+</br>
+</br>
+</br>
+    
+    <!--
+    <p>{{bot_response}}</p>
+    <p>{{art_style}}</p>
+    {% if images!= [] %} {% for image in images %}
+    <div>
+      <img src="{{image}}" />
+    </div>
+    {% endfor %} {% endif %} -->
+    {% if plot_and_image %}{% for key, page in plot_and_image.items() %}
+    <div class="page-container">
+      <div class="page"><p>{{page["plot"]}}</p></div>
+      <img class="center" src="{{page['image']}}" width="500" height="500" />
+    </div>
+    {% endfor %} {% endif %}
+    <!-- <p>{{images}}</p> -->
+
+    <iframe
+      style="border-radius: 12px"
+      width="100%"
+      height="352"
+      frameborder="0"
+      allowfullscreen=""
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy"
+    ></iframe>
+    <br />
+    <br />
+  </body>
+</html>

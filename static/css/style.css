@@ -1,0 +1,50 @@
+h1 {
+  font-weight: bold;
+  font-size: 42px;
+  text-align: center;
+}
+
+h3 {
+  font-size: 28px;
+  text-align: center;
+}
+
+.input-search {
+  line-height: 3em;
+  margin: 10px auto;
+  display: block;
+}
+
+.submit-button {
+  margin: 10px auto;
+  display: block;
+}
+
+.book {
+  font-size: 20;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  justify-content: center;
+}
+
+.page-container {
+  padding: 20px 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.page {
+  width: 900px;
+  display: flex;
+  justify-content: center;
+  padding: 70px 0;
+  text-align: center;
+  font-size: 25px;
+}
