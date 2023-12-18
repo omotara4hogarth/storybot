@@ -3,7 +3,7 @@ import json, os, requests, time, ast, spotipy, webbrowser, urllib.request, rando
 import spotipy.util as util
 
 story_length_words = 1000
-volume_soundtrack = 20
+volume_soundtrack = 25
 
 plot_gen_role = [
     {
