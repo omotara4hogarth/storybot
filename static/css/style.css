@@ -22,6 +22,8 @@ h3 {
 
 .book {
   font-size: 20;
+  display: grid;
+  justify-content: center;
 }
 
 .center {
@@ -35,16 +37,18 @@ h3 {
   padding: 20px 0;
   padding-left: 10px;
   padding-right: 10px;
-  display: flex;
+  display: grid;
   justify-content: center;
   gap: 20px;
 }
 
 .page {
-  width: 900px;
   display: flex;
   justify-content: center;
-  padding: 70px 0;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   text-align: center;
-  font-size: 25px;
+  font-size: 28px;
 }
