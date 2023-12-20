@@ -187,7 +187,7 @@ def create_playlist(title, soundtrack):
     )
     sp.user_playlist_add_tracks(username, my_playlist["id"], soundtrack_list)
     playlist_link = my_playlist["external_urls"]["spotify"]
-    webbrowser.open(my_playlist["external_urls"]["spotify"])
+    # webbrowser.open(my_playlist["external_urls"]["spotify"])
 
     first_part_key_link = playlist_link.replace(
         "https://open.spotify.com/playlist/", ""
