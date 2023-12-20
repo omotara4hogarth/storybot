@@ -107,18 +107,18 @@ def review_for_violations(string):
 
 def get_images(plot_list, art_style):
     print("!!!!!!!!! NOW: Getting the illustrations from DALL-E !!!!!!!!!")
-    # api_version = "2022-08-03-preview"
-    # api_key = os.getenv("AZURE_OPENAI_KEY")
-    # azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
+    api_version = "2022-08-03-preview"
+    api_key = os.getenv("AZURE_OPENAI_KEY")
+    azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
 
-    client = AzureOpenAI(
-        api_key=os.getenv("SAT_AZ_KEY"),
-        azure_endpoint=os.getenv("SAT_AZ_ENDPOINT"),
-        api_version="2023-12-01-preview",
-    )
+    # client = AzureOpenAI(
+    #     api_key=os.getenv("SAT_AZ_KEY"),
+    #     azure_endpoint=os.getenv("SAT_AZ_ENDPOINT"),
+    #     api_version="2023-12-01-preview",
+    # )
 
-    # url = "{}dalle/text-to-image?api-version={}".format(azure_endpoint, api_version)
-    # headers = {"api-key": api_key, "Content-Type": "application/json"}
+    url = "{}dalle/text-to-image?api-version={}".format(azure_endpoint, api_version)
+    headers = {"api-key": api_key, "Content-Type": "application/json"}
 
     img_urls = []
 
@@ -126,16 +126,26 @@ def get_images(plot_list, art_style):
         summary = summarise(string, plot_list).replace('"', "").replace("'", "")
         prompt = f"A vivid, immersive artwork depicting a scene, in the {art_style} art style. {summary}"
         print(prompt)
-        response = client.images.generate(
-            prompt=prompt,
-            size="1024x1024",
-            style="natural",
-            quality="hd",
-            model="dalle3",
-            # model="dalle2",
-        )
-        json_response = json.loads(response.model_dump_json())
-        image_url = json_response["data"][0]["url"]
+        # response = client.images.generate(
+        #     prompt=prompt,
+        #     size="1024x1024",
+        #     style="natural",
+        #     quality="hd",
+        #     model="dalle3",
+        #     # model="dalle2",
+        # )
+        body = {"caption": "A dog in a hat", "resolution": "1024x1024"}
+        submission = requests.post(url, headers=headers, json=body)
+        operation_location = submission.headers["Operation-Location"]
+        retry_after = submission.headers["Retry-after"]
+        status = ""
+        while status != "Succeeded":
+            time.sleep(int(retry_after))
+            response = requests.get(operation_location, headers=headers)
+            status = response.json()["status"]
+        image_url = response.json()["result"]["contentUrl"]
+        # json_response = json.loads(response.model_dump_json())
+        # image_url = json_response["data"][0]["url"]
         img_urls.append(image_url)
         print(img_urls)
         # Generate an image summary through GPT for alt text
