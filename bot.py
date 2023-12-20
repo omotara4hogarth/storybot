@@ -134,7 +134,7 @@ def get_images(plot_list, art_style):
         #     model="dalle3",
         #     # model="dalle2",
         # )
-        body = {"caption": "A dog in a hat", "resolution": "1024x1024"}
+        body = {"caption": prompt, "resolution": "1024x1024"}
         submission = requests.post(url, headers=headers, json=body)
         operation_location = submission.headers["Operation-Location"]
         retry_after = submission.headers["Retry-after"]
@@ -223,4 +223,4 @@ dict = {
 }
 
 # create_playlist(dict["title"], dict["soundtrack"])
-get_images(dict["plot"], dict["art_style"])
+# get_images(dict["plot"], dict["art_style"])
