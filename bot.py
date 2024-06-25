@@ -3,7 +3,7 @@ import json, os, requests, time, ast, spotipy, webbrowser, urllib.request, rando
 import spotipy.util as util
 
 story_length_words = 2000
-dalle_char_limit = 300
+dalle_char_limit = 200
 volume_soundtrack = 25
 
 openai_safety_guidelines = "OpenAI prohibits the use of our models for any of the following activities: Illegal activity, child exploitation, hateful, harassing or violent content, malware generation, physical harm, self-harm content, economic harm, fraudulent or deceptive activity, adult content, political campaigning, creating images of famous individuals or public figures"
